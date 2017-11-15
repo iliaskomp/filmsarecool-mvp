@@ -5,7 +5,7 @@ package com.iliaskomp.filmsarecool.ui.home;
  */
 
 public interface HomeMvpView {
-    void showResults();
+    void displayPopularFilms();
 
-    void showError();
+    void displayError();
 }

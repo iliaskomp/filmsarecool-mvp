@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Home Screen-->
+    <dimen name="popular_films_header_text_size">32sp</dimen>
+</resources>
