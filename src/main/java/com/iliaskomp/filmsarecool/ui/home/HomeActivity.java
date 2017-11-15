@@ -5,12 +5,21 @@ import android.os.Bundle;
 
 import com.iliaskomp.filmsarecool.R;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements HomeMvpView {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    setContentView(R.layout.activity_home);
   }
 
+  @Override
+  public void showResults() {
+
+  }
+
+  @Override
+  public void showError() {
+
+  }
 }
