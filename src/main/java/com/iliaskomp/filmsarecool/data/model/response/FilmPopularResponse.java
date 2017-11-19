@@ -21,4 +21,9 @@ public class FilmPopularResponse {
     private int voteCount;
     private boolean video;
     private double voteAverage;
+
+
+    public String getTitle() {
+        return title;
+    }
 }

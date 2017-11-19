@@ -1,14 +1,9 @@
 package com.iliaskomp.filmsarecool.ui.home;
 
-import com.iliaskomp.filmsarecool.data.model.response.FilmPopularResponse;
-import com.iliaskomp.filmsarecool.data.network.ServiceGenerator;
-import com.iliaskomp.filmsarecool.data.network.TmdbClient;
+import com.iliaskomp.filmsarecool.data.DataManager;
+import com.iliaskomp.filmsarecool.data.model.FilmPopular;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by IliasKomp on 15/11/17.
@@ -16,29 +11,17 @@ import retrofit2.Response;
 
 public class HomePresenter implements HomeMvpPresenter {
     private HomeMvpView view;
+    private DataManager dataManager;
 
-    public HomePresenter(HomeMvpView view) {
+    public HomePresenter(HomeMvpView view, DataManager dataManager) {
         this.view = view;
+        this.dataManager = dataManager;
     }
 
     @Override
     public void getPopularMovies() {
-        TmdbClient tmdbClient = ServiceGenerator.createService(TmdbClient.class);
-        Call<List<FilmPopularResponse>> call = tmdbClient.popularFilms();
-
-        call.enqueue(new Callback<List<FilmPopularResponse>>() {
-            @Override
-            public void onResponse(Call<List<FilmPopularResponse>> call, Response<List<FilmPopularResponse>> response) {
-                System.out.println(response);
-                view.displayPopularFilms();
-            }
-
-            @Override
-            public void onFailure(Call<List<FilmPopularResponse>> call, Throwable t) {
-                view.displayError();
-            }
-        });
-
+        List<FilmPopular> popularFilms = dataManager.getPopularFilms();
+        view.displayPopularFilms(popularFilms);
     }
 
     @Override

@@ -9,6 +9,11 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.iliaskomp.filmsarecool.R;
+import com.iliaskomp.filmsarecool.data.AppDataManager;
+import com.iliaskomp.filmsarecool.data.DataManager;
+import com.iliaskomp.filmsarecool.data.model.FilmPopular;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +38,8 @@ public class HomeFragment extends Fragment implements HomeMvpView {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         unbinder = ButterKnife.bind(this, view);
 
-        presenter = new HomePresenter(this);
+        DataManager dataManager = new AppDataManager();
+        presenter = new HomePresenter(this, dataManager);
         presenter.getPopularMovies();
 
         return view;
@@ -47,24 +53,13 @@ public class HomeFragment extends Fragment implements HomeMvpView {
 
 
     @Override
-    public void displayPopularFilms() {
+    public void displayPopularFilms(List<FilmPopular> popularFilms) {
 
     }
 
     @Override
     public void displayError() {
 
-    }
-
-
-
-    static class ViewHolder {
-        @BindView(R.id.grid_view_film_list)
-        GridView mGridViewFilmList;
-
-        ViewHolder(View view) {
-            ButterKnife.bind(this, view);
-        }
     }
 
     public static HomeFragment newInstance() {
