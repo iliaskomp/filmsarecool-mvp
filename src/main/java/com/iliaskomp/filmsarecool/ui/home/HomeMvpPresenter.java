@@ -10,7 +10,5 @@ public interface HomeMvpPresenter {
 
     void onSearch(String query);
 
-    void onRequestCompleted();
-
-    void onRequestError();
+    void unsubscribe();
 }

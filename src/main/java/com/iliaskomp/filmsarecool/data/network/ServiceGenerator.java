@@ -40,6 +40,7 @@ public class ServiceGenerator {
         apiBaseUrl = newApiBaseUrl;
         builder = new Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .baseUrl(apiBaseUrl);
     }
 

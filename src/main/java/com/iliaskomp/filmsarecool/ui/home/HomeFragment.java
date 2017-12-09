@@ -7,13 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.iliaskomp.filmsarecool.R;
 import com.iliaskomp.filmsarecool.data.AppDataManager;
 import com.iliaskomp.filmsarecool.data.DataManager;
-import com.iliaskomp.filmsarecool.data.model.FilmPopular;
-
-import java.util.List;
+import com.iliaskomp.filmsarecool.data.wrapper.FilmsWrapper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,15 +50,20 @@ public class HomeFragment extends Fragment implements HomeMvpView {
         unbinder.unbind();
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.unsubscribe();
+    }
 
     @Override
-    public void displayPopularFilms(List<FilmPopular> popularFilms) {
+    public void displayPopularFilms(FilmsWrapper popularFilms) {
 
     }
 
     @Override
     public void displayError() {
-
+        Toast.makeText(getActivity(), "There was an error retrieving data.", Toast.LENGTH_SHORT).show();
     }
 
     public static HomeFragment newInstance() {

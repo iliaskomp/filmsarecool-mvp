@@ -1,13 +1,13 @@
 package com.iliaskomp.filmsarecool.data;
 
-import com.iliaskomp.filmsarecool.data.model.FilmPopular;
+import com.iliaskomp.filmsarecool.data.wrapper.FilmsWrapper;
 
-import java.util.List;
+import io.reactivex.Single;
 
 /**
  * Created by IliasKomp on 16/11/17.
  */
 
 public interface DataManager {
-    List<FilmPopular> getPopularFilms();
+    Single<FilmsWrapper> getPopularFilms();
 }
