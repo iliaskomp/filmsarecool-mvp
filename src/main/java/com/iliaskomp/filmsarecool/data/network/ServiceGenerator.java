@@ -11,6 +11,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -20,13 +21,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceGenerator {
     private static String apiBaseUrl = TmdbConfig.API_BASE_URL;
 
-    private static Retrofit.Builder builder = new Retrofit.Builder()
-        .baseUrl(apiBaseUrl)
-        .addConverterFactory(GsonConverterFactory.create());
+    private static Retrofit.Builder builder = createRetrofitBuilder();
 
     private static Retrofit retrofit = builder.build();
 
-    private static HttpLoggingInterceptor logging = new HttpLoggingInterceptor()
+    private static HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor()
         .setLevel(HttpLoggingInterceptor.Level.BODY);
 
     private static Interceptor apiKeyInterceptor = createApiKeyInterceptor();
@@ -45,18 +44,18 @@ public class ServiceGenerator {
     }
 
     public static <S> S createService(Class<S> serviceClass) {
-//        if (!httpClient.interceptors().contains(logging)) {
-//            httpClient.addInterceptor(logging);
-//            builder.client(httpClient.build());
-//            retrofit = builder.build();
-//        }
+        addInterceptor(loggingInterceptor);
+        addInterceptor(apiKeyInterceptor);
 
-        if (!httpClient.interceptors().contains(apiKeyInterceptor)) {
-            httpClient.addInterceptor(apiKeyInterceptor);
-            builder.client(httpClient.build());
-            retrofit = builder.build();
-        }
         return retrofit.create(serviceClass);
+    }
+
+
+    private static Retrofit.Builder createRetrofitBuilder() {
+        return new Retrofit.Builder()
+            .baseUrl(apiBaseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
     }
 
     private static Interceptor createApiKeyInterceptor() {
@@ -77,4 +76,13 @@ public class ServiceGenerator {
             }
         };
     }
+
+    private static void addInterceptor(Interceptor interceptor) {
+        if (!httpClient.interceptors().contains(interceptor)) {
+            httpClient.addInterceptor(interceptor);
+            builder.client(httpClient.build());
+            retrofit = builder.build();
+        }
+    }
+
 }
