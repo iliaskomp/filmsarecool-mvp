@@ -3,10 +3,11 @@ package com.iliaskomp.filmsarecool.ui.home;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.Toast;
 
 import com.iliaskomp.filmsarecool.R;
@@ -27,7 +28,7 @@ import butterknife.Unbinder;
 public class HomeFragment extends Fragment implements HomeMvpView {
 
     @BindView(R.id.grid_view_film_list)
-    GridView mGridViewFilmList;
+    RecyclerView mPopularFilmsList;
 
     Unbinder unbinder;
     private HomeMvpPresenter presenter;
@@ -43,7 +44,7 @@ public class HomeFragment extends Fragment implements HomeMvpView {
         presenter = new HomePresenter(this, dataManager);
         presenter.getPopularMovies();
 
-        
+        mPopularFilmsList.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         return view;
     }
@@ -62,7 +63,8 @@ public class HomeFragment extends Fragment implements HomeMvpView {
 
     @Override
     public void displayPopularFilms(List<FilmPopular> films) {
-
+        HomeAdapter adapter = new HomeAdapter(films);
+        mPopularFilmsList.setAdapter(adapter);
     }
 
     @Override
