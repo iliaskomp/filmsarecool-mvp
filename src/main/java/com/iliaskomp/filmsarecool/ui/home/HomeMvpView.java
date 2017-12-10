@@ -1,13 +1,15 @@
 package com.iliaskomp.filmsarecool.ui.home;
 
-import com.iliaskomp.filmsarecool.data.model.wrapper.FilmsWrapper;
+import com.iliaskomp.filmsarecool.data.model.FilmPopular;
+
+import java.util.List;
 
 /**
  * Created by IliasKomp on 15/11/17.
  */
 
 public interface HomeMvpView {
-    void displayPopularFilms(FilmsWrapper popularFilms);
+    void displayPopularFilms(List<FilmPopular> popularFilms);
 
     void displayError();
 }

@@ -12,7 +12,9 @@ import android.widget.Toast;
 import com.iliaskomp.filmsarecool.R;
 import com.iliaskomp.filmsarecool.data.AppDataManager;
 import com.iliaskomp.filmsarecool.data.DataManager;
-import com.iliaskomp.filmsarecool.data.model.wrapper.FilmsWrapper;
+import com.iliaskomp.filmsarecool.data.model.FilmPopular;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +43,8 @@ public class HomeFragment extends Fragment implements HomeMvpView {
         presenter = new HomePresenter(this, dataManager);
         presenter.getPopularMovies();
 
+        
+
         return view;
     }
 
@@ -57,7 +61,7 @@ public class HomeFragment extends Fragment implements HomeMvpView {
     }
 
     @Override
-    public void displayPopularFilms(FilmsWrapper popularFilms) {
+    public void displayPopularFilms(List<FilmPopular> films) {
 
     }
 

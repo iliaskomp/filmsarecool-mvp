@@ -31,7 +31,7 @@ public class HomePresenter implements HomeMvpPresenter {
                 .subscribeWith(new DisposableSingleObserver<FilmsWrapper>() {
                     @Override
                     public void onSuccess(FilmsWrapper filmsWrapper) {
-                        view.displayPopularFilms(filmsWrapper);
+                        view.displayPopularFilms(filmsWrapper.getFilmsList());
                     }
 
                     @Override
