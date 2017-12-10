@@ -26,4 +26,16 @@ public class FilmPopularResponse {
     public String getTitle() {
         return title;
     }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public int getId() {
+        return id;
+    }
 }

@@ -1,4 +1,4 @@
-package com.iliaskomp.filmsarecool.data.wrapper;
+package com.iliaskomp.filmsarecool.data.model.wrapper;
 
 import com.google.gson.annotations.SerializedName;
 import com.iliaskomp.filmsarecool.data.model.FilmPopular;

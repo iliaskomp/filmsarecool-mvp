@@ -1,6 +1,6 @@
 package com.iliaskomp.filmsarecool.ui.home;
 
-import com.iliaskomp.filmsarecool.data.wrapper.FilmsWrapper;
+import com.iliaskomp.filmsarecool.data.model.wrapper.FilmsWrapper;
 
 /**
  * Created by IliasKomp on 15/11/17.

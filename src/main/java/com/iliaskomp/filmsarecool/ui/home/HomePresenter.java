@@ -1,7 +1,7 @@
 package com.iliaskomp.filmsarecool.ui.home;
 
 import com.iliaskomp.filmsarecool.data.DataManager;
-import com.iliaskomp.filmsarecool.data.wrapper.FilmsWrapper;
+import com.iliaskomp.filmsarecool.data.model.wrapper.FilmsWrapper;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;

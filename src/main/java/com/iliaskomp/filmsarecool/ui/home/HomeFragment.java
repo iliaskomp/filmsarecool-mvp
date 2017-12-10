@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.iliaskomp.filmsarecool.R;
 import com.iliaskomp.filmsarecool.data.AppDataManager;
 import com.iliaskomp.filmsarecool.data.DataManager;
-import com.iliaskomp.filmsarecool.data.wrapper.FilmsWrapper;
+import com.iliaskomp.filmsarecool.data.model.wrapper.FilmsWrapper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

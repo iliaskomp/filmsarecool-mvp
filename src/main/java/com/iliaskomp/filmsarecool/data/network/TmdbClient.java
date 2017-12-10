@@ -1,7 +1,7 @@
 package com.iliaskomp.filmsarecool.data.network;
 
 import com.iliaskomp.filmsarecool.data.model.response.FilmDetailsResponse;
-import com.iliaskomp.filmsarecool.data.wrapper.FilmsWrapper;
+import com.iliaskomp.filmsarecool.data.model.wrapper.FilmsWrapper;
 
 import io.reactivex.Single;
 import retrofit2.Call;

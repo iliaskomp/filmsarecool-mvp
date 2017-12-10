@@ -7,13 +7,31 @@ import com.iliaskomp.filmsarecool.data.model.response.FilmPopularResponse;
  */
 
 public class FilmPopular {
-    private FilmPopularResponse filmPopularResponse;
+    private int id;
+    private String title;
+    private String posterPath;
+    private String releaseDate;
 
     public FilmPopular(FilmPopularResponse filmPopularResponse) {
-        this.filmPopularResponse = filmPopularResponse;
+        this.id = filmPopularResponse.getId();
+        this.title = filmPopularResponse.getTitle();
+        this.posterPath = filmPopularResponse.getPosterPath();
+        this.releaseDate = filmPopularResponse.getReleaseDate();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {
-        return filmPopularResponse.getTitle();
+        return title;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
     }
 }
