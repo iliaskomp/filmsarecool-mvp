@@ -1,10 +1,10 @@
-package com.iliaskomp.filmsarecool.ui.home;
+package com.iliaskomp.filmsarecool.ui.home.presenter;
 
 /**
  * Created by IliasKomp on 15/11/17.
  */
 
-public interface HomeMvpPresenter {
+public interface PopularFilmsPresenter {
 
     void getPopularMovies();
 

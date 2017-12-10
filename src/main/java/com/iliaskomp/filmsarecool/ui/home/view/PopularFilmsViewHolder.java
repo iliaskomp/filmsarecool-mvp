@@ -1,4 +1,4 @@
-package com.iliaskomp.filmsarecool.ui.home;
+package com.iliaskomp.filmsarecool.ui.home.view;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,12 +12,12 @@ import com.iliaskomp.filmsarecool.data.model.FilmPopular;
  * Created by IliasKomp on 10/12/17.
  */
 
-public class HomeViewHolder extends RecyclerView.ViewHolder {
+public class PopularFilmsViewHolder extends RecyclerView.ViewHolder {
 
     private TextView titleTextView;
     private ImageView posterImageView;
 
-    public HomeViewHolder(View itemView) {
+    public PopularFilmsViewHolder(View itemView) {
         super(itemView);
 
         titleTextView = itemView.findViewById(R.id.film_popular_title_text_view);
@@ -27,6 +27,4 @@ public class HomeViewHolder extends RecyclerView.ViewHolder {
     public void setFilmPopularInfo(FilmPopular film) {
         titleTextView.setText(film.getTitle());
     }
-
-
 }

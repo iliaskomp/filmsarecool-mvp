@@ -1,7 +1,8 @@
-package com.iliaskomp.filmsarecool.ui.home;
+package com.iliaskomp.filmsarecool.ui.home.presenter;
 
 import com.iliaskomp.filmsarecool.data.DataManager;
 import com.iliaskomp.filmsarecool.data.model.wrapper.FilmsWrapper;
+import com.iliaskomp.filmsarecool.ui.home.view.PopularFilmsView;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -12,12 +13,12 @@ import io.reactivex.schedulers.Schedulers;
  * Created by IliasKomp on 15/11/17.
  */
 
-public class HomePresenter implements HomeMvpPresenter {
-    private HomeMvpView view;
+public class PopularFilmsPresenterImpl implements PopularFilmsPresenter {
+    private PopularFilmsView view;
     private DataManager dataManager;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-    public HomePresenter(HomeMvpView view, DataManager dataManager) {
+    public PopularFilmsPresenterImpl(PopularFilmsView view, DataManager dataManager) {
         this.view = view;
         this.dataManager = dataManager;
     }

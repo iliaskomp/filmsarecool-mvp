@@ -1,4 +1,4 @@
-package com.iliaskomp.filmsarecool.ui.home;
+package com.iliaskomp.filmsarecool.ui.home.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +14,8 @@ import com.iliaskomp.filmsarecool.R;
 import com.iliaskomp.filmsarecool.data.AppDataManager;
 import com.iliaskomp.filmsarecool.data.DataManager;
 import com.iliaskomp.filmsarecool.data.model.FilmPopular;
+import com.iliaskomp.filmsarecool.ui.home.presenter.PopularFilmsPresenter;
+import com.iliaskomp.filmsarecool.ui.home.presenter.PopularFilmsPresenterImpl;
 
 import java.util.List;
 
@@ -25,13 +27,13 @@ import butterknife.Unbinder;
  * Created by IliasKomp on 15/11/17.
  */
 
-public class HomeFragment extends Fragment implements HomeMvpView {
+public class PopularFilmsFragment extends Fragment implements PopularFilmsView {
 
     @BindView(R.id.grid_view_film_list)
     RecyclerView mPopularFilmsList;
 
     Unbinder unbinder;
-    private HomeMvpPresenter presenter;
+    private PopularFilmsPresenter presenter;
 
     @Nullable
     @Override
@@ -41,7 +43,7 @@ public class HomeFragment extends Fragment implements HomeMvpView {
         unbinder = ButterKnife.bind(this, view);
 
         DataManager dataManager = new AppDataManager();
-        presenter = new HomePresenter(this, dataManager);
+        presenter = new PopularFilmsPresenterImpl(this, dataManager);
         presenter.getPopularMovies();
 
         mPopularFilmsList.setLayoutManager(new GridLayoutManager(getActivity(), 2));
@@ -63,7 +65,7 @@ public class HomeFragment extends Fragment implements HomeMvpView {
 
     @Override
     public void displayPopularFilms(List<FilmPopular> films) {
-        HomeAdapter adapter = new HomeAdapter(films);
+        PopularFilmsAdapter adapter = new PopularFilmsAdapter(films);
         mPopularFilmsList.setAdapter(adapter);
     }
 
@@ -72,7 +74,7 @@ public class HomeFragment extends Fragment implements HomeMvpView {
         Toast.makeText(getActivity(), "There was an error retrieving data.", Toast.LENGTH_SHORT).show();
     }
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
+    public static PopularFilmsFragment newInstance() {
+        return new PopularFilmsFragment();
     }
 }
